@@ -10,5 +10,6 @@ export const Title = Style.h1`
     flex: 1;
     font-size:18px;
     color:#fff;
+    align-self: center;
     text-align:center;
 `

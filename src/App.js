@@ -1,14 +1,16 @@
 import React from 'react';
-import { Button } from 'antd-mobile'
-import Header from './common/header'
+import { Route,Switch } from 'react-router-dom'
+import Home from './views/Home'
+import Detail from './views/Detail'
+import './index.less'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Header></Header>
-        <Button type="primary"> 点击按钮</Button>
-      </div>
+      <Switch>
+        <Route path="/Detail" component={ Detail }></Route>
+        <Route path="/" component={ Home }></Route>
+      </Switch>
     )
   }
 }
