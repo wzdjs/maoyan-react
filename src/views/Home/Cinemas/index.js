@@ -1,8 +1,9 @@
 import React from 'react'
 import store from '@/store'
-import {
-  CHANGE_INP, ADD_ADD, DEL_ADD
-} from './store/actionTypes'
+// import {
+//   ADD_ADD, DEL_ADD
+// } from './store/actionTypes'
+import createAction from './store/createAction'
 import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
 
 class Cinemas extends React.Component{
@@ -33,32 +34,32 @@ class Cinemas extends React.Component{
  * @param{ string }  value 返回的值
  */
 CHANGE(value) {
-    let action = {
-      type: CHANGE_INP,
-      value
-    }
-    store.dispatch(action)
+    // let action = {
+    //   type: CHANGE_INP,
+    //   value
+    // }
+    store.dispatch(createAction.InputAction(value))
   }
 
   /**
    * 添加list数据
    */
   ADD() {
-    console.log(111)
-    let action = {
-      type: ADD_ADD
-    }
-    store.dispatch(action)
+    // console.log(111)
+    // let action = {
+    //   type: ADD_ADD
+    // }
+    store.dispatch(createAction.Addction())
   }
 
    /**
    * 删除list数据
    */
-  DEL() {
-    let action ={
-      type: DEL_ADD
-    }
-    store.dispatch(action)
+  DEL(index) {
+    // let action ={
+    //   type: DEL_ADD
+    // }
+    store.dispatch(createAction.DelAction(index))
   }
 
   render() {
