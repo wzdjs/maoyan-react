@@ -2,12 +2,9 @@ import React from 'react'
 import {
   Topbar,MovieList,BigBox,Film
 } from './style.js'
-import http from '@/utils/http';
+import createAction from './store/createAction'
 import Header from '@/common/header'
 import store from '@/store'
-import {
-  SetMovieList
-} from './store/actionTypes'
 
 class Movies extends React.Component {
   constructor(props) {
@@ -97,19 +94,20 @@ class Movies extends React.Component {
     )
   }
   componentDidMount() {
-    http.get('/api/ajax/movieOnInfoList?token=').then(
-      (res) => {
-        // console.log(res)
-        // this.setState({
-        //   filmList: res.movieList
-        // })
-        let action = {
-          type: SetMovieList,
-          list: res.movieList
-        }
-        store.dispatch(action)
-      }
-    )
+    store.dispatch(createAction.FilmAction)
+    // http.get('/api/ajax/movieOnInfoList?token=').then(
+    //   (res) => {
+    //     // console.log(res)
+    //     // this.setState({
+    //     //   filmList: res.movieList
+    //     // })
+    //     let action = {
+    //       type: SetMovieList,
+    //       list: res.movieList
+    //     }
+    //     store.dispatch(action)
+    //   }
+    // )
   }
   componentWillUnmount() {
     // 销毁监听
