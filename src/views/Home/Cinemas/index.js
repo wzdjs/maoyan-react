@@ -101,8 +101,6 @@ CHANGE(value) {
       http.get('/initTodo.json')
       .then(res => {
         store.dispatch(createAction.Initction(res))
-          // store.dispatch(createAction.Initction(res))
-          console.log(res)
           Toast.hide()
       })
     },1000)
