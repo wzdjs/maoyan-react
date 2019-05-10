@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducer'
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
 /**
  * @param{ function } reducer纯函数
@@ -13,7 +14,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   reducer, /* preloadedState, */
   // 使用中间件
   composeEnhancers(
-    applyMiddleware(logger)
+    // logger的位置要放在最后面
+    applyMiddleware(thunk,logger)
     )
   )
 

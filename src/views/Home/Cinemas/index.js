@@ -1,8 +1,7 @@
 import React from 'react'
 import store from '@/store'
-import http from '@/utils/http'
 import createAction from './store/createAction'
-import { Flex, InputItem, Button, List, WhiteSpace,Toast } from 'antd-mobile'
+import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
 
 class Cinemas extends React.Component{
   constructor(props) {
@@ -47,6 +46,7 @@ CHANGE(value) {
     // let action = {
     //   type: ADD_ADD
     // }
+
     store.dispatch(createAction.Addction())
   }
 
@@ -57,9 +57,14 @@ CHANGE(value) {
     // let action ={
     //   type: DEL_ADD
     // }
+    // store.dispatch(function (dispatch) {
+    //   // 这个异步函数可以接收一个参数dispatch，就是store.dispatch
+    //   setTimeout(() => {
+    //     store.dispatch(createAction.DelAction(index))
+    //   },1000)
+    // })
     store.dispatch(createAction.DelAction(index))
   }
-
   render() {
     const {inputVal, todoList} = this.state
     return (
@@ -91,19 +96,19 @@ CHANGE(value) {
             })
           }
         </List>
-      </div>
-    )
+      </div>)
   }
 
   componentDidMount() {
-    Toast.loading('正在加载，请稍后...',0)
-    setTimeout(() =>{
-      http.get('/initTodo.json')
-      .then(res => {
-        store.dispatch(createAction.Initction(res))
-          Toast.hide()
-      })
-    },1000)
+    store.dispatch(createAction.Initction)
+    // Toast.loading('正在加载，请稍后...',0)
+    // setTimeout(() =>{
+    //   http.get('/initTodo.json')
+    //   .then(res => {
+    //     store.dispatch(createAction.Initction(res))
+    //       Toast.hide()
+    //   })
+    // },1000)
   }
 
   componentWillUnmount() {
