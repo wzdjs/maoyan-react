@@ -7,13 +7,13 @@ import Header from '@/common/header'
 import store from '@/store'
 import {
   SetMovieList
-} from '@/store/actionTypes'
+} from './store/actionTypes'
 
 class Movies extends React.Component {
   constructor(props) {
     super(props)
     this.state ={
-      filmList: store.getState().filmList
+      filmList: store.getState().MOVIE.filmList
     }
 
     /**
@@ -22,7 +22,7 @@ class Movies extends React.Component {
      */
     this.clearSub = store.subscribe(() =>{
        this.setState (() =>({
-        filmList : store.getState().filmList
+        filmList : store.getState().MOVIE.filmList
       }))
     })
   }

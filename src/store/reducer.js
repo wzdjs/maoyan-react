@@ -1,44 +1,15 @@
-// reducer 纯函数
-/**
- * @param {any} state  上一次创库的数据
- * @param {object} action 这次的动作
- * @return 返回一个新的state
- */
-const defaultState = {
-   inputVal : 'hello',//输入框的内容
-   todoList: [], //代办事项
-   filmList: [] //影片列表
- }
+import todoRucer from '@/views/Home/Cinemas/store/reducer.js'
+import movieReducer from '@/views/Home/Movies/store/reducer.js'
+
+const defaultState = {}
 
  export default (state = defaultState, action) => {
-    console.log(state.inputVal,state.todoList)
-
-   //  根据不同的动作。操作数据
-   switch(action.type) {
-      case 'CHANGE_INP':
-      return Object.assign({}, state,
-         { inputVal: action.value
-      })
-
-      case 'ADD_ADD':
-      return Object.assign({}, state,
-         { todoList: [...state.todoList, state.inputVal],
-         inputVal: ''
-      })
-
-      case 'DEL_ADD':
-         let newState = [...state.todoList]
-         newState.splice(action.index,1)
-      return Object.assign({}, state,
-         { todoList: newState
-      })
-
-      case 'SetMovieList':
-      return Object.assign({}, state,
-         { filmList: action.list
-      })
-      default:
-      // 默认没有动作是的数据
-      return state
-   }
+    return {
+     /**
+     *@return { key : value} key 模块  value模块reducer函数的执行
+     *
+     */
+      TODO: todoRucer(state.TODO,action),
+      MOVIE: movieReducer(state.MOVIE,action)
+    }
  }

@@ -2,15 +2,15 @@ import React from 'react'
 import store from '@/store'
 import {
   CHANGE_INP, ADD_ADD, DEL_ADD
-} from '@/store/actionTypes'
+} from './store/actionTypes'
 import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
 
 class Cinemas extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      inputVal: store.getState().inputVal,
-      todoList: store.getState().todoList
+      inputVal: store.getState().TODO.inputVal,
+      todoList: store.getState().TODO.todoList
     }
     /**
      *  监听仓库的数据变化
@@ -18,8 +18,8 @@ class Cinemas extends React.Component{
      */
     this.clearSub = store.subscribe(() => {
       this.setState(() => ({
-        inputVal: store.getState().inputVal,
-        todoList: store.getState().todoList
+        inputVal: store.getState().TODO.inputVal,
+        todoList: store.getState().TODO.todoList
       }))
     })
 
@@ -33,11 +33,6 @@ class Cinemas extends React.Component{
  * @param{ string }  value 返回的值
  */
 CHANGE(value) {
-    // 修改当前组件的数据
-    // this.setState(() => ({
-    //   inputVal: value
-    // }))
-    // 修改仓库的数据
     let action = {
       type: CHANGE_INP,
       value
@@ -68,7 +63,6 @@ CHANGE(value) {
 
   render() {
     const {inputVal, todoList} = this.state
-    console.log(todoList)
     return (
       <div>
         <Flex>
