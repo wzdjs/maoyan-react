@@ -1,10 +1,8 @@
 import React from 'react'
 import store from '@/store'
-// import {
-//   ADD_ADD, DEL_ADD
-// } from './store/actionTypes'
+import http from '@/utils/http'
 import createAction from './store/createAction'
-import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
+import { Flex, InputItem, Button, List, WhiteSpace,Toast } from 'antd-mobile'
 
 class Cinemas extends React.Component{
   constructor(props) {
@@ -96,6 +94,20 @@ CHANGE(value) {
       </div>
     )
   }
+
+  componentDidMount() {
+    Toast.loading('正在加载，请稍后...',0)
+    setTimeout(() =>{
+      http.get('/initTodo.json')
+      .then(res => {
+        store.dispatch(createAction.Initction(res))
+          // store.dispatch(createAction.Initction(res))
+          console.log(res)
+          Toast.hide()
+      })
+    },1000)
+  }
+
   componentWillUnmount() {
     // 销毁监听
     this.clearSub()

@@ -1,7 +1,8 @@
 import {
    CHANGE_INP,
    ADD_ADD,
-   DEL_ADD
+   DEL_ADD,
+   INIT_TODO
 } from './actionTypes'
 
 const defaultState = {
@@ -31,6 +32,10 @@ const defaultState = {
          { todoList: newState
       })
 
+      case INIT_TODO:
+      return Object.assign({}, state,
+         { todoList: action.list
+      })
       default:
       // 默认没有动作是的数据
       return state
