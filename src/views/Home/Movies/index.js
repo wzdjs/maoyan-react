@@ -1,20 +1,39 @@
 import React from 'react'
-import {Topbar,MovieList} from './style.js'
+import {
+  Topbar,MovieList,BigBox,Film
+} from './style.js'
 import http from '@/utils/http';
-// import { Route, Switch,NavLink } from 'react-router-dom'
+import Header from '@/common/header'
+import store from '@/store'
+import {
+  SetMovieList
+} from '@/store/actionTypes'
 
 class Movies extends React.Component {
   constructor(props) {
     super(props)
     this.state ={
-      filmList : []
+      filmList: store.getState().filmList
     }
+
+    /**
+     *  监听仓库的数据变化
+     * @return { function }  调用这个函数可以销毁这个监听
+     */
+    this.clearSub = store.subscribe(() =>{
+       this.setState (() =>({
+        filmList : store.getState().filmList
+      }))
+    })
   }
+
   render() {
     const { filmList } = this.state
     return (
-      <div>
-        <Topbar>
+      <BigBox>
+        <Header></Header>
+        <Film>
+          <Topbar>
           <div className="white-bg topbar-bg ">
             <div className="city-entry">
               <span className="city-name">深圳</span><i className="city-entry-arrow"></i>
@@ -72,18 +91,29 @@ class Movies extends React.Component {
             })
           }
         </MovieList>
-      </div>
+        </Film>
+
+      </BigBox>
     )
   }
   componentDidMount() {
     http.get('/api/ajax/movieOnInfoList?token=').then(
       (res) => {
-        console.log(res)
-        this.setState({
-          filmList: res.movieList
-        })
+        // console.log(res)
+        // this.setState({
+        //   filmList: res.movieList
+        // })
+        let action = {
+          type: SetMovieList,
+          list: res.movieList
+        }
+        store.dispatch(action)
       }
     )
+  }
+  componentWillUnmount() {
+    // 销毁监听
+    this.clearSub()
   }
 }
 

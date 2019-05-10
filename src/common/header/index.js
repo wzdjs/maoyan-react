@@ -6,12 +6,17 @@ Head,Title
 
 class Header extends React.Component {
   render() {
+    const { title, fixed } = this.props
     return (
-      <Head>
-        <Title>猫眼电影</Title>
+      <Head className={ fixed ? 'isfixed' : '' }>
+        <Title>{ title }</Title>
       </Head>
     )
   }
 }
 
+Header.defaultProps = {
+  title: '猫眼电影',
+  fixed: true
+}
 export default Header;

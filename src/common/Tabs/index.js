@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
-  BottomNavBar, TabLi
+  TabUL, TabLi
 } from './style'
 
 class Bottom extends React.Component {
@@ -15,7 +15,7 @@ class Bottom extends React.Component {
   render() {
     const { Bottom } = this.props
     return (
-      <BottomNavBar>
+      <TabUL>
         {
           Bottom.map(item => {
             return (
@@ -25,7 +25,7 @@ class Bottom extends React.Component {
             )
           })
         }
-      </BottomNavBar>
+      </TabUL>
     )
   }
 }

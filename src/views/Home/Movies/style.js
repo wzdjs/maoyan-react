@@ -1,9 +1,17 @@
 import Styled from 'styled-components'
 import search from '@/image/search.png'
 
+export const BigBox = Styled.div`
+  padding-top:50px;
+  height:100%;
+  width:100%;
+`
+export const Film = Styled.div`
+`
 export const Topbar = Styled.section`
   border-bottom: 1px solid #e6e6e6;
   height: 44px;
+  width:100%;
   .topbar-bg {
     display: flex;
     align-items: center;
@@ -13,13 +21,10 @@ export const Topbar = Styled.section`
       padding-left: 15px;
       font-size: 15px;
       color: #666;
-      display: -webkit-box;
       display: flex;
-      -webkit-box-align: center;
       align-items: center;
     }
     .switch-hot {
-      display: -webkit-box;
       display: flex;
       height: 44px;
       line-height: 44px;
@@ -40,10 +45,10 @@ export const Topbar = Styled.section`
       background: url(${ search }) 10px no-repeat;
       background-size: 20px;
       padding: 10px 15px 10px 10px;
-  }
+    }
   }
 `
-export const MovieList = Styled.ul`
+export const MovieList = Styled.div`
   width:100%;
   .main-block{
     display: flex;

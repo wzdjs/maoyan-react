@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Switch,Redirect } from 'react-router-dom'
 import Cinemas from './Cinemas'
 import Movies from './Movies'
-import Header from '../../common/header';
 import Bottom from '../../common/Tabs';
 
 
@@ -12,7 +11,7 @@ class Home extends React.Component{
     this.state ={
       Bottom: [
         {
-          id: 'movie',name: '电影', icon: ''
+          id: 'movies',name: '电影', icon: ''
         },
         {
           id: 'cinemas',name: '影院', icon: ''
@@ -26,11 +25,10 @@ class Home extends React.Component{
   render() {
     return (
       <>
-      <Header></Header>
       <Switch>
-        <Route path="/movies/:id" component= { Movies }></Route>
+        <Route path="/movies" component= { Movies }></Route>
         <Route path="/cinemas" component= { Cinemas }></Route>
-        <Redirect to="/movies/nowplaying"></Redirect>
+        <Redirect to="/movies"></Redirect>
       </Switch>
       <Bottom Bottom={ this.state.Bottom }>
 

@@ -1,6 +1,6 @@
 import Style from 'styled-components'
 
-export const BottomNavBar = Style.ul`
+export const TabUL = Style.ul`
   height:48px;
   position: fixed;
   bottom: 0;
