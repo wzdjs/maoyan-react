@@ -75,7 +75,7 @@ class UI extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props)
+    this.props.Film()
   }
 }
 export default UI

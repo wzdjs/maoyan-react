@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch,Redirect } from 'react-router-dom'
 import Cinemas from './Cinemas'
-import Movies from './Movies/temp'
+import Movies from './Movies/index'
 import Bottom from '../../common/Tabs';
 
 
