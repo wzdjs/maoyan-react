@@ -5,7 +5,9 @@ import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
 
 class UI extends React.Component{
   render() {
-    const {inputVal, todoList, CHANGE, ADD, DEL } = this.props
+    const {
+      inputVal, todoList, CHANGE, ADD, DEL
+    } = this.props
     return (
       <div>
         <Flex>
@@ -36,6 +38,11 @@ class UI extends React.Component{
           }
         </List>
       </div>)
+  }
+
+  componentWillMount() {
+    console.log(this.props)
+      this.props.Initction()
   }
 }
 export default UI

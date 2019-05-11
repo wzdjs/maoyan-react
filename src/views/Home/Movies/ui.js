@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '@/common/header'
 import {
   Topbar,MovieList,BigBox,Film
-} from './style'
+} from './store/style'
 
 class UI extends React.Component {
   render() {
@@ -72,6 +72,10 @@ class UI extends React.Component {
         </Film>
       </BigBox>
     )
+  }
+
+  componentWillMount() {
+    console.log(this.props)
   }
 }
 export default UI
