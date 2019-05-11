@@ -11,33 +11,28 @@ const defaultState = {
  }
 
  export default (state = defaultState, action) => {
-
+   let NEWDATE = JSON.parse(JSON.stringify(state))
    //  根据不同的动作。操作数据
    switch(action.type) {
       case CHANGE_INP:
-      return Object.assign({}, state,
-         { inputVal: action.value
-      })
+         NEWDATE.inputVal = action.value
+         return NEWDATE
 
       case ADD_ADD:
-      return Object.assign({}, state,
-         { todoList: [...state.todoList, state.inputVal],
-         inputVal: ''
-      })
+         NEWDATE.todoList.push(state.inputVal)
+         NEWDATE.inputVal = ''
+         return NEWDATE
 
       case DEL_ADD:
-         let newState = [...state.todoList]
-         newState.splice(action.index,1)
-      return Object.assign({}, state,
-         { todoList: newState
-      })
+         NEWDATE.todoList.splice(action.index,1)
+         return NEWDATE
 
       case INIT_TODO:
-      return Object.assign({}, state,
-         { todoList: action.list
-      })
+         NEWDATE.todoList = action.list
+         return NEWDATE
       default:
+
       // 默认没有动作是的数据
-      return state
+         return NEWDATE
    }
  }
