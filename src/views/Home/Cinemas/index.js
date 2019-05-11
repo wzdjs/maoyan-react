@@ -1,7 +1,10 @@
+// 容器组件
 import React from 'react'
 import store from '@/store'
+import UI from './store/ui'
 import createAction from './store/createAction'
-import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
+// import { Flex, InputItem, Button, List, WhiteSpace } from 'antd-mobile'
+
 
 class Cinemas extends React.Component{
   constructor(props) {
@@ -66,37 +69,46 @@ CHANGE(value) {
     store.dispatch(createAction.DelAction(index))
   }
   render() {
-    const {inputVal, todoList} = this.state
     return (
-      <div>
-        <Flex>
-          <Flex.Item>
-            <InputItem
-            value={ inputVal }
-            onChange={ this.CHANGE }
-            />
-          </Flex.Item>
+      <UI
+      inputVal={this.state.inputVal }
+      todoList={this.state.todoList }
+      CHANGE={this.CHANGE }
+      ADD={this.ADD }
+      DEL={this.DEL }
+      />
+    //   const {inputVal, todoList} = this.state
+    // return (
+    //   <div>
+    //     <Flex>
+    //       <Flex.Item>
+    //         <InputItem
+    //         value={ inputVal }
+    //         onChange={ this.CHANGE }
+    //         />
+    //       </Flex.Item>
 
-          <Flex.Item>
-            <Button onClick={ this.ADD } >增加</Button>
-          </Flex.Item>
-        </Flex>
-        <WhiteSpace></WhiteSpace>
-        <List>
-          {
-            todoList.map((item, index) => {
-              return(
-                <List.Item
-                  key= { index }
-                  onClick= { this.DEL }
-                  >
-                { item }
-                </List.Item>
-              )
-            })
-          }
-        </List>
-      </div>)
+    //       <Flex.Item>
+    //         <Button onClick={this.ADD } >增加</Button>
+    //       </Flex.Item>
+    //     </Flex>
+    //     <WhiteSpace></WhiteSpace>
+    //     <List>
+    //       {
+    //         todoList.map((item, index) => {
+    //           return(
+    //             <List.Item
+    //               key= { index }
+    //               onClick= { this.DEL }
+    //               >
+    //             { item }
+    //             </List.Item>
+    //           )
+    //         })
+    //       }
+    //     </List>
+    //   </div>
+    )
   }
 
   componentDidMount() {
