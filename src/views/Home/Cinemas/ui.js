@@ -41,7 +41,7 @@ class UI extends React.Component{
   }
 
   componentWillMount() {
-    console.log(this.props)
+    // console.log(this.props.todoList)
       this.props.Initction()
   }
 }

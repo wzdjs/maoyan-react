@@ -13,7 +13,7 @@ const defaultState = {
       return Object.assign({}, state,
          { filmList: action.list
       })
-      
+
       default:
       // 默认没有动作是的数据
       return state

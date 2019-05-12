@@ -7,10 +7,11 @@ import createAction from './store/createAction'
  *@param{object} state :recux的state放在最外层（路由的外面）
  *return {object} 映射到UI组件上的prpos
  **/
- const mapStateToProps =({ TODO }) => {
+ const mapStateToProps =(state) => {
+   console.log(state.getIn(['TODO','inputVal']))
     return{
-      inputVal: TODO.inputVal,
-      todoList: TODO.todoList
+      inputVal: state.getIn(['TODO','inputVal']),
+      todoList: state.getIn(['TODO','todoList'])
     }
  }
 
