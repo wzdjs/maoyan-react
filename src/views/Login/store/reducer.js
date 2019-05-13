@@ -6,9 +6,9 @@ import {
 } from './actionTypes'
 
 import { fromJS } from 'immutable'
-
+let user =window.sessionStorage.getItem('USER')
 const defaultState = fromJS({
-   user: null,
+   user: user ? JSON.parse(user) : null,
    userName: '',
    password: ''
  })

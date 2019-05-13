@@ -21,12 +21,13 @@ const SET_LOGIN = ( history ) => {
           password: state.getIn(['USER','password'])
         })
         .then(res => {
-          console.log(res)
           if(res.code === 0) {
             dispatch({
               type: LOGIN_DATA,
               user: res.data
             })
+            // 登陆成功保存登陆的数据
+            window.sessionStorage.setItem('USER',JSON.stringify(res.data))
             // 登陆成功跳转页面  history.replace
             history.replace('/movie')
 
