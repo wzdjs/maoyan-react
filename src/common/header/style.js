@@ -5,6 +5,12 @@ export const Head = Style.header`
     line-hight:50px;
     display: flex;
     background: #e54847;
+    z-index:100;
+    &.isfixed{
+        position:fixed;
+        top:0;
+        width:100%;
+    }
 `
 export const Title = Style.h1`
     flex: 1;
