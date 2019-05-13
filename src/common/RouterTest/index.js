@@ -7,6 +7,7 @@ import store from '@/store'
  *@return 组件
  */
 const LoginRouter = (Component) => {
+
   return class extends React.Component {
       constructor(props) {
         super(props)
@@ -16,7 +17,8 @@ const LoginRouter = (Component) => {
       }
 
     render() {
-      console.log(this.state.user)
+      // console.log(this.state.user)
+      let pathname = this.props.location.pathname || '/movie'
       return (
         <Fragment>
           {
@@ -26,7 +28,8 @@ const LoginRouter = (Component) => {
             ) : (
               // 不存在  跳转到登陆
               // console.log(this.props)
-              this.props.history.replace('/Login')
+              // 通过问好传参（想要去的页面）
+              this.props.history.replace(`/Login?pathname=${pathname}`)
             )
           }
         </Fragment>

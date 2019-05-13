@@ -43,7 +43,9 @@ const mapDispatchToProps = (dispatch, props) =>{
     },
 
     toLOGIN: () => {
-    dispatch(createAction.SET_LOGIN(props.history))
+      // 传递过来props.history和props.location.search(想去的页面的参数)
+      let redirect = props.location.search.substr(11)
+    dispatch(createAction.SET_LOGIN(props.history,redirect))
     }
   }
 }
