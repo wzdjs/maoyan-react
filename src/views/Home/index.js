@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, Switch,Redirect } from 'react-router-dom'
 import Cinemas from './Cinemas'
-import Movies from './Movies/index'
+import Movies from './Movies'
+// import Myself from '../Login'
 import Bottom from '../../common/Tabs';
 
 
@@ -28,6 +29,7 @@ class Home extends React.Component{
       <Switch>
         <Route path="/movies" component= { Movies }></Route>
         <Route path="/cinemas" component= { Cinemas }></Route>
+        {/* <Route path="/login" component= { Myself }></Route> */}
         <Redirect to="/movies"></Redirect>
       </Switch>
       <Bottom Bottom={ this.state.Bottom }>
