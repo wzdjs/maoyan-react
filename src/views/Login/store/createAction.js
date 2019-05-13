@@ -3,8 +3,9 @@ import { Toast } from 'antd-mobile'
 import store from '@/store'
 import {
   LOGIN_DATA,
-  PASSWORD_DATA,
-  USERNAME_DATA
+  SET_FORM
+  // PASSWORD_DATA,
+  // USERNAME_DATA
 } from './actionTypes'
 
 /**
@@ -38,23 +39,31 @@ const SET_LOGIN = ( history ) => {
   }
 }
 
-const UserNameAction = (value) => {
+// const UserNameAction = (value) => {
+//   return {
+//     type: USERNAME_DATA,
+//     value
+//   }
+// }
+
+// const PassWordAction = (value) => {
+//   return {
+//     type: PASSWORD_DATA,
+//     value
+//   }
+// }
+
+const FromAction = (key,value) => {
   return {
-    type: USERNAME_DATA,
-    value
+    type: SET_FORM,
+    value,
+    key
   }
 }
-
-const PassWordAction = (value) => {
-  return {
-    type: PASSWORD_DATA,
-    value
-  }
-}
-
 
 export default {
   SET_LOGIN,
-  UserNameAction,
-  PassWordAction
+  // UserNameAction,
+  // PassWordAction
+  FromAction
 }

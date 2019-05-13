@@ -1,7 +1,8 @@
 import {
    LOGIN_DATA,
-   PASSWORD_DATA,
-   USERNAME_DATA
+   // PASSWORD_DATA,
+   // USERNAME_DATA
+   SET_FORM
 } from './actionTypes'
 
 import { fromJS } from 'immutable'
@@ -18,11 +19,14 @@ const defaultState = fromJS({
       case LOGIN_DATA:
          return state.set('user', action.user)
 
-      case USERNAME_DATA:
-         return state.set('userName',action.value)
+      // case USERNAME_DATA:
+      //    return state.set('userName',action.value)
 
-      case PASSWORD_DATA:
-         return state.set('password',action.value)
+      // case PASSWORD_DATA:
+      //    return state.set('password',action.value)
+
+      case SET_FORM:
+      return state.set(action.key,action.value)
 
       default:
          return state
